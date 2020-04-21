@@ -28,7 +28,7 @@ Para instalar basta rodar os comandos abaixo, lembrando que é necessário ter t
 ## Funcionalidades
 
 Este teste tem as seguintes funcionalidades:
-- Buscar os dados de uma API deste testes [https://jsonplaceholder.typicode.com](https://jsonplaceholder.typicode.com).
+- Buscar os dados de uma API deste testes ([https://jsonplaceholder.typicode.com](https://jsonplaceholder.typicode.com)).
 - Sincronizar os dados de dois endpoints (posts e users).
 - Excluir os dados mantendo sempre atualizado com os valores dos dados remotos.
 - Rodar a rotina de sincronismo a cada 5 minutos.
