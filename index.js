@@ -26,3 +26,5 @@ mongoose.connect(server+mongodb, { useNewUrlParser: true, useUnifiedTopology: tr
     }
   });
 });
+
+require('./server.js')

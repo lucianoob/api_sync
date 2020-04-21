@@ -1,13 +1,13 @@
 const _ =  require('underscore');
 const fetch =  require('node-fetch');
 
-const Users = require('../models/users');
+const UsersModel = require('../models/users');
 
 const scriptSync = 'syncUsers';
 
 const _getLocalData = () => {
   return new Promise((resolve, reject) => {
-    Users.find(null, { id: 1 }).lean().exec((err, data) => {
+    UsersModel.find(null, { id: 1 }).lean().exec((err, data) => {
       if (!err) {
         console.log('# [sync] '+scriptSync+' ['+(new Date().toLocaleString('pt-BR'))+']: get ' + data.length + ' local objects...');
         return resolve();
@@ -36,7 +36,7 @@ const _saveOrUpdate = (data) => {
   Array.prototype.forEach.call(data, (el) => {
     promises.push(function() {
       return new Promise((resolve, reject) => {
-        Users.findOneAndUpdate({ id: el.id }, el, { new: true, upsert: true, setDefaultsOnInsert: true }, function (err, finded) {
+        UsersModel.findOneAndUpdate({ id: el.id }, el, { new: true, upsert: true, setDefaultsOnInsert: true }, function (err, finded) {
           if (!err) {
             return resolve(finded);
           }
@@ -55,11 +55,11 @@ const _saveOrUpdate = (data) => {
 
 const _compareAndRemove = (remoteData) => {
   return new Promise((resolve) => {
-    Users.find(null, { id: 1 }).sort({id: -1}).lean().exec((err, data) => {
+    UsersModel.find(null, { id: 1 }).sort({id: -1}).lean().exec((err, data) => {
       const localIds = data.map((el) => el['id']);
       const remoteIds = remoteData.map((el) => el['id']);
       const toRemoveIds = _.difference(localIds, remoteIds);
-      Users.deleteMany({ _id: { $in: toRemoveIds } }).exec(() => {
+      UsersModel.deleteMany({ _id: { $in: toRemoveIds } }).exec(() => {
         console.log('# [sync] '+scriptSync+' ['+(new Date().toLocaleString('pt-BR'))+']: removed ' + toRemoveIds.length + ' objects...');
         resolve();
       });
