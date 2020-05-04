@@ -33,3 +33,14 @@ Este teste tem as seguintes funcionalidades:
 - Excluir os dados mantendo sempre atualizado com os valores dos dados remotos.
 - Rodar a rotina de sincronismo a cada 5 minutos.
 - Acesso aos dados via API interna feita com GraphQL.
+
+## Telas
+
+### Sync
+![Tela de Resultado do Sync](/images/api_sync01.png)
+
+### Users (GraphQL)
+![Tela Users (GraphQL)](/images/api_sync02.png)
+
+### Posts (GraphQL)
+![Tela de Posts (GraphQL)](/images/api_sync03.png)
