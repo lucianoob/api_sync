@@ -35,6 +35,10 @@ Este teste tem as seguintes funcionalidades:
 - Rodar a rotina de sincronismo a cada 5 minutos.
 - Acesso aos dados via API interna feita com GraphQL.
 
+### Demonstração
+Acesse um exemplo do app publicado no Google Cloud:
+- [https://app-sync.lucianob.app](https://app-sync.lucianob.app)
+
 ## Telas
 
 ### Sync
