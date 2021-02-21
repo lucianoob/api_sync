@@ -7,23 +7,24 @@ Teste de um app para sincronizar os dados de uma API em um banco de dados.
 Para rodar o projeto deve-se utilizar os seguintes requisitos:
 - Nodejs 
 - NPM
-- MongoDB
+- MongoDB (instalação local ou algum serviço online [Ex.: https://cloud.mongodb.com])
 
 ## Componentes
 
 Os componentes utilizados neste projeto são:
-- Nodejs v10.20.0
-- NPM v6.14.4
-- Mongoose v5.9.10
+- Nodejs v14.15.5
+- NPM v6.14.11
+- Mongoose v5.11.17
 - Cron v1.8.2
-- GraphQL v15.0.0
+- GraphQL v15.5.0
 
 ## Instalação
 
 Para instalar basta rodar os comandos abaixo, lembrando que é necessário ter todos os pré-requisitos instalados.
 - npm i
+- Salve o arquivo env-example para .env inserindo neste as informações de conexão do MongoDB.
 - npm start
-- Acesse [http://localhost:4000](http://localhost:4000)
+- Acesse [http://localhost:8080](http://localhost:8080)
 
 ## Funcionalidades
 

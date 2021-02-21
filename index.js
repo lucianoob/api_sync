@@ -1,12 +1,22 @@
+require('dotenv').config();
 
 const mongoose = require('mongoose');
 const packages = require('./package.json');
 
-const server = 'mongodb://localhost:27017/';
-const mongodb = 'api_sync';
+const server = (process.env.DB_USER ? process.env.DB_USER+':'+process.env.DB_PASS+'@' : '')+process.env.DB_HOST+(process.env.DB_PORT ? ':'+process.env.DB_PORT : '');
+const mongodb = process.env.DB_NAME;
 
 mongoose.Promise = global.Promise;
-mongoose.connect(server+mongodb, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false, useCreateIndex: true }, function(err){
+mongoose.connect(process.env.DB_URI+'://'+server+'/'+mongodb+'?'+process.env.MONGODB_VARS, { 
+  useNewUrlParser: process.env.MONGODB_USENEWURLPARSER === '1', 
+  useUnifiedTopology: process.env.MONGODB_USEUNIFIEDTOPOLOGY === '1', 
+  useFindAndModify: process.env.MONGODB_USEFINDANDMODIFY === '1', 
+  useCreateIndex: process.env.MONGODB_USECREATEINDEX === '1' 
+}, function(err){
+  if(err) {
+    console.log('Error: ', err);
+    process.exit(1);
+  }
   var admin = new mongoose.mongo.Admin(mongoose.connection.db);
   admin.buildInfo(function (err, info) {
     console.log('\n@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@');
@@ -21,6 +31,7 @@ mongoose.connect(server+mongodb, { useNewUrlParser: true, useUnifiedTopology: tr
     console.log('%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%');
     if(err) {
       console.log("Error: ", err);
+      process.exit(1);
     } else {
       require('./cron.js')();
     }

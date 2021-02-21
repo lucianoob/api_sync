@@ -1,10 +1,4 @@
-const mongoose = require("mongoose");
-const { GraphQLID, GraphQLString, GraphQLList, GraphQLNonNull, GraphQLObjectType, GraphQLSchema } = require("graphql");
-
-const server = 'mongodb://localhost:27017/';
-const mongodb = 'api_sync';
-
-mongoose.connect(server+mongodb, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false, useCreateIndex: true });
+const { GraphQLID, GraphQLList, GraphQLNonNull, GraphQLObjectType, GraphQLSchema } = require("graphql");
 
 const UsersModel = require('./models/users');
 const PostsModel = require('./models/posts');
