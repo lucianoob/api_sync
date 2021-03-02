@@ -37,7 +37,7 @@ Este teste tem as seguintes funcionalidades:
 
 ### Demonstração
 Acesse um exemplo do app publicado no Google Cloud:
-- [https://app-sync.lucianob.app](https://app-sync.lucianob.app)
+- [https://appsync-305515.uk.r.appspot.com](https://appsync-305515.uk.r.appspot.com)
 
 ## Telas
 
